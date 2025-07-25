@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Deepa Mehendi Artist | Lucknow</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Georgia', 'Times New Roman', Times, serif;
+      background: #fdfdfd;
+      color: #333;
+      line-height: 1.5;
+      padding-top: 120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+      z-index: 900;
+    }
+
+    .brand-area {
+      position: relative;
+    }
+
+    .brand-area h2 {
+      font-family: 'Satisfy', cursive;
+      margin: 5px 0 0;
+      font-size: clamp(24px, 6vw, 32px);
+      color: #4b2e2e;
+    }
+
+    .brand-area p {
+      margin: 2px 0;
+      font-style: italic;
+      color: #e67e22;
+      font-size: clamp(14px, 4vw, 16px);
+      animation: blink 2s infinite;
+    }
+
+    .location-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .location {
+      font-weight: bold;
+      color: #4b2e2e;
+      font-size: clamp(12px, 3.5vw, 14px);
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #4b2e2e;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 10px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      z-index: 1000;
+      display: none;
+      width: 180px;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 15px;
+      color: #4b2e2e;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f5e4c3;
+      color: #a52a2a;
+    }
+
+    nav { 
+      margin-top: 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 5px;
+    }
+
+    nav a {
+      margin: 5px 8px;
+      text-decoration: none;
+      color: #4b2e2e;
+      font-weight: bold;
+      font-size: clamp(13px, 3.8vw, 15px);
+      display: inline-block;
+    }
+
+    nav a:hover { color: #e67e22; }
+
+    /* Main Content */
+    .welcome-box {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .welcome-box video {
+      width: 100%;
+      border-radius: 0;
+    }
+
+    .section {
+      width: 95%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px 0;
+    }
+
+    .section h2 {
+      text-align: center;
+      color: #4b2e2e;
+      margin-bottom: 20px;
+      font-size: clamp(20px, 6vw, 26px);
+      padding: 0 10px;
+    }
+
+    .section h2 i { 
+      margin-right: 8px; 
+      color: goldenrod;
+      font-size: clamp(18px, 5vw, 24px);
+    }
+
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, goldenrod, #f5e4c3, goldenrod);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    .section p {
+      padding: 0 15px;
+      text-align: center;
+      font-size: clamp(14px, 4vw, 16px);
+    }
+
+    /* Gallery Styles */
+    .gallery-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .gallery-preview img {
+      width: 90%;
+      max-width: 400px;
+      border-radius: 0;
+      transition: transform 0.3s;
+      cursor: pointer;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .gallery-preview img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .gallery-button {
+      display: block;
+      margin: 15px auto;
+      padding: 12px 25px;
+      background: goldenrod;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 80%;
+      max-width: 300px;
+      transition: all 0.3s;
+    }
+
+    .gallery-button:hover {
+      background: #d4af37;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .full-gallery {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 10px;
+      margin-bottom: 20px;
+    }
+
+    .full-gallery.show {
+      display: flex;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .full-gallery img {
+      width: calc(50% - 10px);
+      max-width: 200px;
+      border-radius: 0;
+      transition: transform 0.3s;
+      cursor: pointer;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .full-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Enhanced Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      touch-action: none;
+    }
+
+    .lightbox.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      width: auto;
+      height: auto;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .lightbox-img-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      touch-action: none;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      transition: transform 0.3s;
+      transform-origin: center center;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1002;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      z-index: 1001;
+    }
+
+    .lightbox-nav button {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-nav button:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      font-size: 16px;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 20px;
+      z-index: 1001;
+    }
+
+    /* Table Styles */
+    .rate-table {
+      margin: 20px auto;
+      width: 95%;
+      max-width: 800px;
+      border-collapse: collapse;
+      font-size: clamp(12px, 3.5vw, 14px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .rate-table th, .rate-table td {
+      border: 1px solid #eee;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .rate-table th {
+      background: goldenrod;
+      color: #fff;
+    }
+
+    .rate-table tr:nth-child(even) {
+      background: #fffaf0;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      margin-bottom: 12px;
+      background: #fff;
+      border-radius: 0;
+      padding: 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+
+    .faq-item:hover {
+      background: #fffaf0;
+    }
+
+    .faq-question {
+      font-size: clamp(14px, 4vw, 16px);
+      color: #4b2e2e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      font-size: clamp(13px, 3.8vw, 15px);
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-item .icon {
+      transition: transform 0.3s ease;
+      font-size: clamp(12px, 3.5vw, 14px);
+    }
+
+    .faq-item.open .icon {
+      transform: rotate(180deg);
+    }
+
+    /* Video Styles */
+    video {
+      width: 100%;
+      border-radius: 0;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      position: relative;
+      width: 95%;
+      margin: 20px auto;
+    }
+
+    .video-container video {
+      width: 100%;
+    }
+
+    /* Review Styles */
+    .review-scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      padding: 15px;
+      scroll-snap-type: x mandatory;
+      margin: 0 auto;
+      max-width: 100%;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .review-scroll-container video {
+      flex: 0 0 auto;
+      width: 280px;
+      max-width: 85vw;
+      scroll-snap-align: start;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #4b2e2e;
+      font-size: clamp(12px, 3.5vw, 14px);
+      background: #fffaf0;
+    }
+
+    footer a {
+      color: #4b2e2e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.8; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      body {
+        padding-top: 100px;
+      }
+
+      header {
+        padding: 10px 40px;
+      }
+
+      .full-gallery img {
+        width: calc(33.33% - 10px);
+      }
+
+      .gallery-preview img {
+        max-width: 500px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .full-gallery img {
+        width: calc(25% - 10px);
+        max-width: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Main Content -->
+  <div id="main-content">
+    <!-- Header -->
+    <header>
+      <div class="brand-area">
+        <h2>Deepa Mehendi Artist</h2>
+        <div class="location-row">
+          <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#design-gallery"><i class="fas fa-images"></i> Design Gallery</a>
+            <a href="#guest-gallery"><i class="fas fa-users"></i> Guest Gallery</a>
+            <a href="#colour-gallery"><i class="fas fa-palette"></i> Colours</a>
+            <a href="https://wa.me/918874896711"><i class="fas fa-phone"></i> Contact Us</a>
+          </div>
+          <div class="location">LUCKNOW</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#design-gallery">Gallery</a>
+        <a href="#guest-gallery">Guest Gallery</a>
+        <a href="#colour-gallery">Colours</a>
+        <a href="#packages">Packages</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <!-- Welcome Video -->
+    <div class="welcome-box" id="welcome">
+      <video autoplay muted loop playsinline id="w-video">
+        <source src="index/w.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Certified Artist Section -->
+    <section class="section">
+      <h2><i class="fas fa-award"></i>Certified Artist</h2>
+      <p>Certified with WedMeGood. Our team is hardworking and talented to make your events memorable.</p>
+    </section>
+    
+    <!-- Timelapse Video -->
+    <div class="video-container">
+      <video src="timelaps/T.mp4" poster="timelaps/t.jpeg" controls playsinline></video>
+    </div>
+
+    <!-- Signature Mehendi Section -->
+    <section class="section">
+      <h2><i class="fas fa-feather-alt"></i>Signature Mehendi</h2>
+      <p>
+        We create Traditional, Royal, and Arabic Mehendi designs filled with beauty and emotion – perfect for your special day.
+      </p>
+    </section>
+
+    <!-- Design Gallery -->
+    <section class="section" id="design-gallery">
+      <h2><i class="fas fa-images"></i>Design Gallery</h2>
+      <div class="gallery-preview" id="design-preview">
+        <img src="images/H2.jpeg" alt="Bridal Mehendi Design" onclick="zoomImage(this)">
+        <img src="images/H3.jpeg" alt="Bridal Mehendi Design" onclick="zoomImage(this)">
+        <button onclick="toggleGallery('design')" class="gallery-button">See More Designs</button>
+      </div>
+      <div id="full-design-gallery" class="full-gallery"></div>
+    </section>
+
+    <!-- Guest Gallery -->
+    <section class="section" id="guest-gallery">
+      <h2><i class="fas fa-users"></i>Guest Gallery</h2>
+      <div class="gallery-preview" id="guest-preview">
+        <img src="guest/G1.jpeg" alt="Guest Mehendi Design" onclick="zoomImage(this)">
+        <img src="guest/G2.jpeg" alt="Guest Mehendi Design" onclick="zoomImage(this)">
+        <button onclick="toggleGallery('guest')" class="gallery-button">See More Guest Designs</button>
+      </div>
+      <div id="full-guest-gallery" class="full-gallery"></div>
+    </section>
+
+    <!-- Colour Gallery -->
+    <section class="section" id="colour-gallery">
+      <h2><i class="fas fa-palette"></i>Our New Mehendi Colours</h2>
+      <div class="gallery-preview" id="colour-preview">
+        <img src="colour/C1.jpeg" alt="Mehendi Colour Sample" onclick="zoomImage(this)">
+        <img src="colour/C2.jpeg" alt="Mehendi Colour Sample" onclick="zoomImage(this)">
+        <button onclick="toggleGallery('colour')" class="gallery-button">See More Colours</button>
+      </div>
+      <div id="full-colour-gallery" class="full-gallery"></div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section" id="packages">
+      <h2><i class="fas fa-list"></i>Offerings & Packages</h2>
+      <table class="rate-table">
+        <tr><th>Offerings</th><th>Rates</th></tr>
+        <tr><td>Bridal Mehendi</td><td>₹5100 onwards</td></tr>
+        <tr><td>Guest Mehendi – Traditional</td><td>₹500 per person</td></tr>
+        <tr><td>Guest Mehendi – Arabic</td><td>₹300 per person</td></tr>
+        <tr><th colspan="2">Packages</th></tr>
+        <tr><td>1 Bride + 10 Guests</td><td>₹11,000</td></tr>
+        <tr><td>1 Bride + 20 Guests</td><td>₹15,000</td></tr>
+        <tr><td>1 Bride + 50 Guests</td><td>₹25,000</td></tr>
+      </table>
+      <p style="text-align:center; font-weight:bold; font-size:clamp(14px, 4vw, 16px); animation:blink 2s infinite; padding: 0 15px;">
+        Custom packages available, please contact us.
+      </p>
+    </section>
+
+    <!-- Mehendi Emotion Video -->
+    <div class="video-container">
+      <video width="100%" autoplay muted loop playsinline id="nv-video">
+        <source src="NV.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p style="text-align:center; font-size:clamp(16px, 4.5vw, 18px); font-style:italic; font-weight:bold; color:#4b2e2e; margin-top:-10px; padding: 0 15px;">
+      Mehendi is not just an art, it's an emotion.
+    </p>
+
+    <!-- FAQ Section -->
+    <div class="section" id="faq">
+      <h2><i class="fas fa-question-circle"></i>FAQ</h2>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          Is advance refundable? <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="faq-answer">No, advance is not refundable.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          When should I book? <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="faq-answer">Please book at least 2 weeks in advance.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          What about bookings outside Lucknow? <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="faq-answer">Travel charges apply for bookings outside Lucknow.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <div class="faq-question">
+          Are colours natural? <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="faq-answer">Yes, we use natural mehendi colours.</div>
+      </div>
+    </div>
+
+    <!-- Thanks Section -->
+    <section class="section">
+      <h2><i class="fas fa-heart"></i>Special Thanks</h2>
+      <p>Thank you for trusting us to make your celebrations beautiful.</p>
+    </section>
+
+    <!-- Reviews -->
+    <div class="section">
+      <div class="review-scroll-container">
+        <video src="thanks/1.mp4" poster="thanks/1p.jpeg" controls playsinline></video>
+        <video src="thanks/2.mp4" poster="thanks/2p.jpeg" controls playsinline></video>
+        <video src="thanks/3.mp4" poster="thanks/3p.jpeg" controls playsinline></video>
+      </div>
+    </div>
+
+    <!-- Artist Section -->
+    <section class="section">
+      <h2><i class="fas fa-user"></i>Know Your Artist</h2>
+      <p>Deepa, a passionate mehendi artist with over 12 years of experience in bridal and festive mehendi, believes in creating lasting memories with every intricate stroke, blending tradition with creativity and joy.</p>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/918874896711?text=Hi%20Deepa%20Ji%2C%20I%20would%20like%20to%20book%20a%20mehendi%20appointment.%20Please%20share%20details." 
+      class="whatsapp-float" 
+      target="_blank" 
+      title="Book on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+      <div style="margin-bottom: 5px;">
+        <strong>Contact Us:</strong> <a href="https://wa.me/918874896711">+91 8874 896711</a>
+      </div>
+      &copy; 2025 Deepa Mehendi Artist. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Enhanced Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <div class="lightbox-counter" id="lightbox-counter"></div>
+      <div class="lightbox-img-container">
+        <img src="" alt="" class="lightbox-img" id="lightbox-img" />
+      </div>
+      <div class="lightbox-nav">
+        <button onclick="navigateLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="navigateLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle FAQ function
+    function toggleFAQ(el) {
+      el.classList.toggle('open');
+    }
+
+    // Toggle dropdown menu
+    function toggleMenu() {
+      document.getElementById('dropdownMenu').classList.toggle('show');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.matches('.menu-toggle') && !event.target.closest('.dropdown-menu')) {
+        const dropdowns = document.getElementsByClassName('dropdown-menu');
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    });
+
+    // Enhanced Lightbox functionality with pinch zoom
+    let currentImages = [];
+    let currentIndex = 0;
+    let touchStartDistance = null;
+    let initialScale = 1;
+    let currentScale = 1;
+    let transformOrigin = { x: 0, y: 0 };
+
+    function openLightbox(images, index) {
+      currentImages = images;
+      currentIndex = index;
+      updateLightboxImage();
+      document.getElementById('lightbox').classList.add('show');
+      document.body.style.overflow = 'hidden';
+      resetZoom();
+      updateCounter();
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('show');
+      document.body.style.overflow = '';
+      resetZoom();
+    }
+
+    function updateLightboxImage() {
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = currentImages[currentIndex];
+      updateCounter();
+    }
+
+    function updateCounter() {
+      document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+
+    function navigateLightbox(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = currentImages.length - 1;
+      if (currentIndex >= currentImages.length) currentIndex = 0;
+      updateLightboxImage();
+      resetZoom();
+    }
+
+    function resetZoom() {
+      currentScale = 1;
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.style.transform = `scale(${currentScale})`;
+      lightboxImg.style.transformOrigin = 'center center';
+    }
+
+    // Handle touch events for pinch zoom
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxContainer = document.querySelector('.lightbox-img-container');
+
+    lightboxContainer.addEventListener('touchstart', handleTouchStart, { passive: false });
+    lightboxContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+    lightboxContainer.addEventListener('touchend', handleTouchEnd, { passive: false });
+
+    function handleTouchStart(e) {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        // Calculate initial distance between two fingers
+        touchStartDistance = getDistance(
+          e.touches[0].clientX, e.touches[0].clientY,
+          e.touches[1].clientX, e.touches[1].clientY
+        );
+        initialScale = currentScale;
+        
+        // Calculate transform origin between the two fingers
+        transformOrigin = {
+          x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+          y: (e.touches[0].clientY + e.touches[1].clientY) / 2
+        };
+        
+        // Convert to image coordinates
+        const imgRect = lightboxImg.getBoundingClientRect();
+        transformOrigin.x = (transformOrigin.x - imgRect.left) / imgRect.width;
+        transformOrigin.y = (transformOrigin.y - imgRect.top) / imgRect.height;
+      }
+    }
+
+    function handleTouchMove(e) {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        // Calculate current distance between fingers
+        const currentDistance = getDistance(
+          e.touches[0].clientX, e.touches[0].clientY,
+          e.touches[1].clientX, e.touches[1].clientY
+        );
+        
+        // Calculate scale factor
+        if (touchStartDistance !== null) {
+          currentScale = initialScale * (currentDistance / touchStartDistance);
+          // Limit zoom
+          currentScale = Math.max(1, Math.min(currentScale, 5));
+          
+          // Apply transform with origin
+          lightboxImg.style.transformOrigin = `${transformOrigin.x * 100}% ${transformOrigin.y * 100}%`;
+          lightboxImg.style.transform = `scale(${currentScale})`;
+        }
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (e.touches.length < 2) {
+        touchStartDistance = null;
+      }
+    }
+
+    function getDistance(x1, y1, x2, y2) {
+      return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
+    // Click to zoom in/out
+    lightboxImg.addEventListener('click', function(e) {
+      if (currentScale === 1) {
+        // Zoom in to 2x at click position
+        const rect = this.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        
+        currentScale = 2;
+        this.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+        this.style.transform = `scale(${currentScale})`;
+      } else {
+        // Reset zoom
+        resetZoom();
+      }
+    });
+
+    // Double tap to zoom
+    let lastTap = 0;
+    lightboxImg.addEventListener('touchend', function(e) {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      
+      if (tapLength < 300 && tapLength > 0) {
+        e.preventDefault();
+        if (currentScale === 1) {
+          // Zoom in to 2x at tap position
+          const rect = this.getBoundingClientRect();
+          const x = (e.changedTouches[0].clientX - rect.left) / rect.width;
+          const y = (e.changedTouches[0].clientY - rect.top) / rect.height;
+          
+          currentScale = 2;
+          this.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+          this.style.transform = `scale(${currentScale})`;
+        } else {
+          // Reset zoom
+          resetZoom();
+        }
+      }
+      
+      lastTap = currentTime;
+    });
+
+    // Image zoom functionality
+    function zoomImage(img) {
+      // Get all images in the same gallery
+      const gallery = img.closest('.gallery-preview') || img.closest('.full-gallery');
+      const images = Array.from(gallery.querySelectorAll('img')).map(i => i.src);
+      const index = images.indexOf(img.src);
+      
+      openLightbox(images, index);
+    }
+
+    // Gallery data
+    const galleries = {
+      design: {
+        previewId: 'design-preview',
+        galleryId: 'full-design-gallery',
+        images: [
+          ...Array.from({length: 16}, (_, i) => `images/H${i+2}.jpeg`),
+          ...Array.from({length: 13}, (_, i) => `images/L${i+1}.jpeg`)
+        ],
+        buttonText: {
+          more: 'See More Designs',
+          less: 'See Less Designs'
+        }
+      },
+      guest: {
+        previewId: 'guest-preview',
+        galleryId: 'full-guest-gallery',
+        images: [
+          ...Array.from({length: 13}, (_, i) => `guest/G${i+1}.jpeg`),
+          ...Array.from({length: 8}, (_, i) => `guest/S${i+1}.jpeg`)
+        ],
+        buttonText: {
+          more: 'See More Guest Designs',
+          less: 'See Less Guest Designs'
+        }
+      },
+      colour: {
+        previewId: 'colour-preview',
+        galleryId: 'full-colour-gallery',
+        images: Array.from({length: 14}, (_, i) => `colour/C${i+1}.jpeg`),
+        buttonText: {
+          more: 'See More Colours',
+          less: 'See Less Colours'
+        }
+      }
+    };
+
+    // Currently open gallery
+    let currentOpenGallery = null;
+
+    // Toggle gallery function
+    function toggleGallery(galleryType) {
+      const gallery = galleries[galleryType];
+      const galleryEl = document.getElementById(gallery.galleryId);
+      const previewEl = document.getElementById(gallery.previewId);
+      const button = previewEl.querySelector('.gallery-button');
+      
+      // If this gallery is already open, close it
+      if (galleryEl.classList.contains('show')) {
+        galleryEl.classList.remove('show');
+        previewEl.style.display = 'flex';
+        button.textContent = gallery.buttonText.more;
+        currentOpenGallery = null;
+        return;
+      }
+      
+      // Close any other open gallery first
+      if (currentOpenGallery && currentOpenGallery !== galleryType) {
+        const currentGallery = galleries[currentOpenGallery];
+        const currentGalleryEl = document.getElementById(currentGallery.galleryId);
+        const currentPreviewEl = document.getElementById(currentGallery.previewId);
+        const currentButton = currentPreviewEl.querySelector('.gallery-button');
+        
+        currentGalleryEl.classList.remove('show');
+        currentPreviewEl.style.display = 'flex';
+        currentButton.textContent = currentGallery.buttonText.more;
+      }
+      
+      // If the gallery is empty, populate it
+      if (galleryEl.children.length === 0) {
+        galleryEl.innerHTML = "";
+        gallery.images.forEach((src, index) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = galleryType.charAt(0).toUpperCase() + galleryType.slice(1) + " Image " + (index + 1);
+          img.onclick = () => {
+            const allImages = Array.from(galleryEl.querySelectorAll('img')).map(i => i.src);
+            openLightbox(allImages, index);
+          };
+          galleryEl.appendChild(img);
+        });
+      }
+      
+      // Show the gallery
+      previewEl.style.display = "none";
+      galleryEl.classList.add('show');
+      button.textContent = gallery.buttonText.less;
+      currentOpenGallery = galleryType;
+      
+      // Scroll to the gallery
+      galleryEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Close lightbox when clicking outside image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', function(e) {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.classList.contains('show')) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+          navigateLightbox(-1);
+        } else if (e.key === 'ArrowRight') {
+          navigateLightbox(1);
+        }
+      }
+    });
+
+    // Video autoplay and unmute functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video');
+      
+      videos.forEach(video => {
+        // Unmute on click
+        video.addEventListener('click', function() {
+          if (this.muted) {
+            this.muted = false;
+          }
+          this.play();
+        });
+      });
+      
+      // Pause other videos when one plays
+      document.addEventListener('play', function(e) {
+        const allVideos = document.querySelectorAll('video');
+        allVideos.forEach(video => {
+          if (video !== e.target && !video.paused) {
+            video.pause();
+          }
+        });
+      }, true);
+      
+      // Pause videos when they're not in view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.target.tagName === 'VIDEO') {
+            if (entry.isIntersecting) {
+              if (entry.target.id === 'w-video' || entry.target.id === 'nv-video') {
+                entry.target.play().catch(e => console.log('Autoplay prevented:', e));
+              }
+            } else {
+              entry.target.pause();
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      document.querySelectorAll('video').forEach(video => {
+        observer.observe(video);
+      });
+    });
+  </script>
+</body>
+</html
